@@ -1,0 +1,370 @@
+# Use Cases
+
+**How banks and enterprises use Strigoi to secure AI deployments.**
+
+---
+
+## Banking & Financial Services
+
+### 1. Pre-Deployment AI Security Validation
+
+**Scenario**: Community bank deploying AI-powered document analysis for loan applications.
+
+**Challenge**:
+- No existing framework for AI security assessment
+- Regulatory examination approaching (OCC, FDIC, or Fed)
+- Need to demonstrate due diligence
+- Limited security team expertise in AI/LLM
+
+**Strigoi Solution**:
+1. Scan AI system with directional probing (`strigoi probe all`)
+2. Identify vulnerabilities before production deployment
+3. Generate MITRE ATLAS-mapped report for examiners
+4. Fix critical issues, document acceptance of lower-risk findings
+5. Pass examination with evidence of thorough assessment
+
+**Outcome**: Bank deploys AI confidently, examination passes, no regulatory findings.
+
+---
+
+### 2. Third-Party AI Vendor Risk Assessment
+
+**Scenario**: Mid-size bank ($2B assets) evaluating AI chatbot vendor.
+
+**Challenge**:
+- Vendor claims "enterprise-grade security"
+- No way to verify without access to source code
+- Contractual liability if vendor has breach
+- Need objective security assessment
+
+**Strigoi Solution**:
+1. Request vendor deploy Strigoi-compatible MCP server
+2. Run comprehensive security scan via A2MCP bridge
+3. Discover:
+   - 7 hardcoded API keys in configuration
+   - SQL injection vulnerability in customer query
+   - Missing rate limiting (DoS risk)
+   - PII logging to plaintext files
+
+4. Present findings to vendor, negotiate:
+   - Remediation timeline (30 days)
+   - Contractual liability caps
+   - Ongoing Strigoi monitoring requirement
+
+**Outcome**: Vendor fixes issues, bank has ongoing visibility, risk managed.
+
+---
+
+### 3. Regulatory Examination Preparation
+
+**Scenario**: Large community bank ($5B assets) with multiple AI use cases, OCC IT examination scheduled.
+
+**Challenge**:
+- 8 different AI implementations across departments
+- No centralized AI inventory or security assessment
+- Examiners expect MITRE framework alignment
+- 45 days until examination
+
+**Strigoi Solution**:
+
+**Week 1-2: Discovery**
+- Deploy Strigoi across all AI systems
+- Run comprehensive scans (all directions)
+- Build AI inventory automatically from scan results
+
+**Week 3: Analysis**
+- Review findings with security team
+- Prioritize CRITICAL/HIGH vulnerabilities
+- Map to MITRE ATLAS techniques (automatic)
+
+**Week 4: Remediation**
+- Fix CRITICAL issues (hardcoded secrets, SQL injection)
+- Document HIGH issues with acceptance rationale
+- Create remediation roadmap for MEDIUM/LOW
+
+**Week 5: Documentation**
+- Generate examination-ready reports
+- Prepare evidence binders (scan results, remediation proof)
+- Brief executive team
+
+**Week 6: Examination**
+- Present Strigoi methodology to examiners
+- Demonstrate comprehensive assessment approach
+- Show MITRE ATLAS alignment (regulatory expectation)
+
+**Outcome**: Zero IT examination findings related to AI security. Examiner commends bank's proactive approach.
+
+---
+
+### 4. Continuous AI Security Monitoring
+
+**Scenario**: Regional bank ($15B assets) with production AI systems.
+
+**Challenge**:
+- AI systems evolve constantly (new models, features)
+- Security posture drifts over time
+- Need real-time threat detection
+- SIEM integration required
+
+**Strigoi Solution**:
+
+**Architecture**:
+```
+AI Production Systems
+    ↓ (A2MCP bridge)
+NATS JetStream (Strigoi)
+    ↓ (real-time streaming)
+Fleet Manager (alerts)
+    ↓ (webhook integration)
+Bank SIEM (Splunk/QRadar)
+```
+
+**Monitoring**:
+- Real-time capture of AI CLI activity
+- Automatic vulnerability classification
+- Alerts on CRITICAL/HIGH findings
+- Weekly security posture reports
+
+**Example Alert**:
+```
+[CRITICAL] AWS API Key Detected in Prompt
+- System: Loan Processing AI
+- Tool: Claude Code MCP
+- Pattern: AWS_SECRET_ACCESS_KEY
+- MITRE: AML.T0043 (Supply Chain Compromise)
+- Action: Key rotated, prompt sanitized
+```
+
+**Outcome**: Bank detects and remediates AI security issues within minutes, not months.
+
+---
+
+## Enterprise Use Cases
+
+### 5. AI Development Team Security Testing
+
+**Scenario**: SaaS company building AI-powered features.
+
+**Challenge**:
+- Development team lacks AI security expertise
+- Need to catch vulnerabilities before code review
+- Want shift-left security approach
+- CI/CD integration required
+
+**Strigoi Solution**:
+
+**Pre-Commit Hook**:
+```bash
+#!/bin/bash
+# .git/hooks/pre-commit
+strigoi probe east . --format json --severity CRITICAL,HIGH
+if [ $? -ne 0 ]; then
+  echo "❌ CRITICAL/HIGH vulnerabilities detected"
+  echo "Run 'strigoi probe east .' for details"
+  exit 1
+fi
+```
+
+**GitHub Actions**:
+```yaml
+- name: Strigoi Security Scan
+  run: |
+    strigoi probe all . --format sarif > strigoi-results.sarif
+
+- name: Upload to GitHub Security
+  uses: github/codeql-action/upload-sarif@v2
+  with:
+    sarif_file: strigoi-results.sarif
+```
+
+**Outcome**: Vulnerabilities caught in development, never reach production.
+
+---
+
+### 6. AI Penetration Testing
+
+**Scenario**: Healthcare company deploying HIPAA-compliant AI for patient records.
+
+**Challenge**:
+- Annual penetration testing required (HIPAA)
+- Traditional pentest firms lack AI/LLM expertise
+- Need specialized AI security assessment
+- Compliance audit approaching
+
+**Strigoi Solution**:
+
+**Engagement Scope**:
+1. **Reconnaissance** (`probe north`) - Map external attack surface
+2. **Vulnerability Discovery** (`probe all`) - Comprehensive scan
+3. **Exploitation Simulation** - Use Strigoi vulnerable MCPs as training
+4. **Risk Assessment** - MITRE ATLAS mapping + severity scoring
+5. **Remediation Guidance** - Specific fix recommendations
+
+**Deliverable**: Full penetration test report with:
+- Executive summary
+- Technical findings with PoC
+- MITRE ATLAS technique mapping
+- Remediation roadmap
+- Compliance attestation
+
+**Outcome**: HIPAA audit passes, AI system certified secure.
+
+---
+
+### 7. AI Vendor Security Certification
+
+**Scenario**: AI infrastructure platform (like Prismatic.io) wants to demonstrate security to customers.
+
+**Challenge**:
+- Customers demand security evidence
+- Traditional certifications (SOC 2) insufficient for AI
+- Need AI-specific security validation
+- Competitive differentiation opportunity
+
+**Strigoi Solution**:
+
+**Self-Assessment Process**:
+1. Deploy Strigoi against own platform
+2. Discover vulnerabilities proactively
+3. Fix CRITICAL/HIGH issues
+4. Document security posture
+
+**Customer-Facing Certification**:
+- **"Strigoi-Certified AI Platform"** badge
+- Public security assessment summary
+- MITRE ATLAS coverage report
+- Ongoing monitoring attestation
+
+**Marketing Value**:
+*"Our platform is Strigoi-certified—we found and fixed critical vulnerabilities before you even knew they existed."*
+
+**Outcome**: Competitive advantage, customer trust, enterprise sales wins.
+
+---
+
+### 8. AI Supply Chain Security
+
+**Scenario**: Fortune 500 company using 20+ AI SaaS vendors.
+
+**Challenge**:
+- No visibility into vendor AI security
+- Supply chain risk (third-party breach)
+- Need unified security monitoring
+- Board-level reporting required
+
+**Strigoi Solution**:
+
+**Centralized Monitoring Architecture**:
+```
+Vendor 1 AI → A2MCP → ┐
+Vendor 2 AI → A2MCP → ├→ Central NATS → Strigoi Fleet Manager
+Vendor 3 AI → A2MCP → ┘                        ↓
+...                                     Executive Dashboard
+```
+
+**Monthly Board Report**:
+- AI vendor security scorecard
+- Vulnerability trends
+- MITRE ATLAS heatmap
+- Risk metrics (CRITICAL/HIGH count)
+
+**Vendor Requirements**:
+- Must support Strigoi monitoring
+- Quarterly security scans mandatory
+- Remediation SLAs enforced
+- Audit rights in contract
+
+**Outcome**: Board has AI supply chain visibility, vendor risk managed proactively.
+
+---
+
+## Education & Training
+
+### 9. AI Security Training for Bank Staff
+
+**Scenario**: SBS CyberSecurity Institute training program for community banks.
+
+**Challenge**:
+- Banks lack AI security expertise
+- Need hands-on training (not just theory)
+- Want realistic vulnerability examples
+- Certificate program for CPE credits
+
+**Strigoi Solution**:
+
+**Course Module: "AI/LLM Security Fundamentals"**
+
+**Lab 1: Install Vulnerable MCPs**
+```bash
+cd examples/insecure-mcps
+./install-all.sh
+```
+
+**Lab 2: Exploit Vulnerabilities**
+- SQL injection in mcp-sqlite
+- Path traversal in mcp-filesystem
+- SSRF in mcp-http-api
+
+**Lab 3: Detect with Strigoi**
+```bash
+strigoi probe east ~/.strigoi/mcps/
+strigoi probe west ~/.strigoi/mcps/
+```
+
+**Lab 4: Remediate**
+- Parameterized SQL queries
+- Path sanitization
+- URL allowlisting
+
+**Outcome**: Bank staff gain hands-on AI security expertise, CPE credits earned.
+
+---
+
+## Research & Academia
+
+### 10. AI Security Research
+
+**Scenario**: University research team studying LLM vulnerabilities.
+
+**Challenge**:
+- Need reproducible test environment
+- Want to contribute to AI security field
+- Require real-world vulnerability examples
+- Academic publication goals
+
+**Strigoi Solution**:
+
+**Research Framework**:
+1. Use Strigoi vulnerable MCPs as baseline
+2. Develop new attack techniques
+3. Test detection with Strigoi
+4. Publish findings + PoC code
+5. Contribute detection patterns back to Strigoi
+
+**Academic Contributions**:
+- Novel prompt injection patterns
+- MITRE ATLAS technique extensions
+- Defense mechanisms
+- Benchmark datasets
+
+**Outcome**: Strigoi becomes academic standard for AI security research.
+
+---
+
+## Next Steps
+
+**Identify your use case above?**
+→ [Installation Guide](./installation/README.md) - Get started
+
+**Want to see it in action?**
+→ [Quick Start Guide](./quick-start.md) - Run your first scan
+
+**Need to demo to stakeholders?**
+→ [Demo Flow](../testing/demo-flow.md) - Presentation-ready walkthrough
+
+**Questions about deployment?**
+→ [Operations Guide](../operations/deployment/README.md) - Production deployment
+
+---
+
+*Strigoi: From community banks to Fortune 500—AI security for everyone.*

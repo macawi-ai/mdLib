@@ -1,0 +1,46 @@
+[book]
+title = "Strigoi - AI/LLM Security Assessment Platform"
+authors = ["Macawi AI"]
+description = "Comprehensive guide to Strigoi AI/LLM security assessment platform for banking and enterprise deployments"
+language = "en"
+multilingual = false
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = true
+
+[preprocessor.links]
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/macawi-ai/Strigoi"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/macawi-ai/mdLib/edit/main/strigoi/{path}"
+site-url = "/strigoi/"
+cname = "docs.macawi.ai"
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+
+[output.html.print]
+enable = true
+
+[output.html.playground]
+editable = false
+copyable = true
+copy-js = true
+line-numbers = true
