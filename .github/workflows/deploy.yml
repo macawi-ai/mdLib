@@ -1,4 +1,4 @@
-name: Deploy mdBook to GitHub Pages
+name: Deploy mdBooks to GitHub Pages
 
 on:
   push:
@@ -25,15 +25,31 @@ jobs:
         with:
           mdbook-version: '0.4.40'
 
-      - name: Build Strigoi book
+      - name: Build all books
         run: |
+          # Create deployment directory
+          mkdir -p _site
+
+          # Copy landing page
+          cp index.html _site/
+
+          # Build Strigoi book
           cd strigoi
           mdbook build
+          cd ..
+          mv strigoi/book _site/strigoi
+
+          # Future books will be added here:
+          # cd prismatic && mdbook build && cd ..
+          # mv prismatic/book _site/prismatic
+
+          # cd nelapark && mdbook build && cd ..
+          # mv nelapark/book _site/nelapark
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./strigoi/book
+          path: ./_site
 
   deploy:
     environment:
