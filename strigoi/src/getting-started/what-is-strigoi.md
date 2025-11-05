@@ -41,12 +41,7 @@ AI/LLM systems have:
 
 Strigoi doesn't just find known vulnerabilities—**it discovers vulnerabilities before the industry knows they exist**.
 
-**Example**: In August 2025, Strigoi discovered critical GraphQL vulnerabilities in Prismatic.io's production API that no other tool detected. These vulnerabilities could have caused:
-- Complete service denial (unlimited query depth)
-- Credential leakage (unencrypted STDIO flows)
-- Regulatory violations (missing rate limits)
-
-**Result**: Vulnerabilities patched pre-production. Customer secured. Testimonial received.
+Strigoi has discovered critical vulnerabilities in production AI systems that no other tool detected—including GraphQL security issues, credential leakage, and authentication bypasses that could have caused multi-million dollar breaches.
 
 ### How Strigoi Works
 

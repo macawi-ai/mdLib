@@ -213,7 +213,7 @@ fi
 
 ### 7. AI Vendor Security Certification
 
-**Scenario**: AI infrastructure platform (like Prismatic.io) wants to demonstrate security to customers.
+**Scenario**: AI infrastructure platform wants to demonstrate security to customers.
 
 **Challenge**:
 - Customers demand security evidence
@@ -239,60 +239,6 @@ fi
 *"Our platform is Strigoi-certified—we found and fixed critical vulnerabilities before you even knew they existed."*
 
 **Outcome**: Competitive advantage, customer trust, enterprise sales wins.
-
----
-
-#### **Real-World Success: Prismatic.io** ⭐
-
-**Customer**: [Prismatic.io](https://prismatic.io) - AI infrastructure platform for SaaS integrations
-
-**The Challenge**:
-Prismatic was about to launch a major GraphQL API update with unknown security vulnerabilities. Traditional security tools (SAST, DAST, penetration testing) gave them a clean bill of health, but they lacked confidence:
-
-*"How do we know our API is actually secure? What if there are vulnerabilities we don't even know to look for?"*
-
-**Strigoi Assessment** (August 2025):
-Single-day comprehensive security scan using directional probing framework (North/South/East/West).
-
-**Findings** (4 CRITICAL vulnerabilities):
-1. **GraphQL Depth Attack (DoS)** - No query depth limits → infinite nesting possible → complete service denial
-2. **Unencrypted Credential Flow** - Customer API keys flowing through unencrypted STDIO channels
-3. **Missing Query Complexity Analysis** - No pre-execution cost analysis → expensive queries exhaust resources
-4. **No Rate Limiting** - Unlimited requests allowed from single source
-
-**Business Impact if Exploited**:
-- **DoS vulnerability**: $500K-$2M+ (platform outage, SLA violations, customer churn)
-- **Credential exposure**: $5M-$50M+ (GDPR/CCPA fines, class-action lawsuits, brand destruction)
-- **Combined risk**: Multi-million dollar breach potential
-
-**Strigoi Outcome**:
-- ✅ All 4 CRITICAL vulnerabilities patched within 48 hours
-- ✅ Production launch proceeded securely and on schedule
-- ✅ **Zero security incidents** post-launch (6+ months production)
-- ✅ **Zero customer breaches** related to discovered vulnerabilities
-- ✅ Enterprise contracts secured (security posture validated)
-
-**Return on Investment**:
-- **Assessment cost**: <$10K (engineering time + Strigoi)
-- **Breach costs prevented**: $5M-$50M+
-- **ROI**: **500x - 5,000x** return
-
-**Customer Testimonial**:
-> *"Strigoi found critical vulnerabilities we didn't know existed. Their directional probing framework discovered issues that traditional penetration testing and SAST tools completely missed. The assessment gave us confidence to launch our GraphQL API knowing we'd addressed the most critical security risks."*
->
-> **— Buzz, Security Team, Prismatic.io**
-
-**Competitive Advantage Gained**:
-- **Marketing**: "Strigoi-certified platform" badge
-- **Enterprise Sales**: Security validation in RFP responses
-- **Customer Confidence**: Transparent security posture
-- **Thought Leadership**: Case study demonstrates AI security maturity
-
-👉 **[Read the full Prismatic case study](../case-studies/prismatic.md)** for detailed technical findings, remediation steps, and lessons for banking/financial services.
-
----
-
-**Key Takeaway**: Prismatic deployed securely. Your organization can too.
 
 ---
 

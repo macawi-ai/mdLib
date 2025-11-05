@@ -193,8 +193,7 @@ strigoi intel tail north
 
 ### **For Executives**:
 1. **See the Value**: [5-Minute Demo](../quick-demo.md) - Real vulnerability discovery
-2. **Read Success Stories**: [Prismatic Case Study](../case-studies/prismatic.md) - $5M+ breach prevented
-3. **Understand Use Cases**: [10 Banking Scenarios](./use-cases.md) - Regulatory compliance
+2. **Understand Use Cases**: [10 Banking Scenarios](./use-cases.md) - Regulatory compliance
 
 ---
 

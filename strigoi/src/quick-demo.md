@@ -6,15 +6,15 @@
 
 ## The Problem: AI/LLM Systems Are Vulnerable
 
-**Real-world example**: In August 2025, a production GraphQL API was about to launch with **4 CRITICAL vulnerabilities** that could have caused:
-- 💥 Complete service denial (unlimited query depth = infinite DoS)
-- 🔓 Credential leakage (unencrypted STDIO flows)
-- 🚨 Regulatory violations (missing rate limits, no query complexity analysis)
+**Real-world scenario**: AI systems frequently launch with **CRITICAL vulnerabilities** that could cause:
+- 💥 Complete service denial (unlimited query depth, resource exhaustion)
+- 🔓 Credential leakage (unencrypted data flows)
+- 🚨 Regulatory violations (missing rate limits, no access controls)
 - 💰 **Multi-million dollar breach potential**
 
-**Traditional security tools missed these vulnerabilities entirely.**
+**Traditional security tools often miss these vulnerabilities entirely.**
 
-Strigoi found them in **5 minutes**.
+Strigoi finds them in **5 minutes**.
 
 ---
 
@@ -222,30 +222,6 @@ def http_get(url: str):
 
 ---
 
-## The Real-World Outcome: Prismatic.io
-
-**Customer**: Prismatic.io (AI infrastructure platform)
-**Challenge**: About to launch GraphQL API with unknown security posture
-**Strigoi Action**: Comprehensive security scan (August 2025)
-
-**Findings**:
-- ❌ **GraphQL query depth unlimited** (DoS vulnerability)
-- ❌ **No rate limiting** on GraphQL endpoint
-- ❌ **Unencrypted credential flows** through STDIO
-- ❌ **Missing query complexity analysis**
-
-**Outcome**:
-- ✅ All CRITICAL vulnerabilities fixed **before production launch**
-- ✅ Zero security incidents post-launch
-- ✅ Customer testimonial: *"Strigoi found vulnerabilities we didn't know existed"*
-- ✅ Multi-million dollar breach **prevented**
-
-**Business value**: Production deployment secured, enterprise customers confident, competitive advantage gained.
-
-👉 **[Read the full Prismatic case study](./case-studies/prismatic.md)**
-
----
-
 ## Why Strigoi Finds What Other Tools Miss
 
 **Traditional SAST/DAST**: Designed for web apps, miss AI/LLM patterns
@@ -311,7 +287,6 @@ Want to test Strigoi yourself? We provide **3 intentionally vulnerable MCP serve
 
 **For Executives**:
 - [Use Cases](./getting-started/use-cases.md) - 10 banking/enterprise scenarios
-- [Case Studies](./case-studies/prismatic.md) - Real customer success stories
 - [What is Strigoi?](./getting-started/what-is-strigoi.md) - Problem/solution overview
 
 **For Developers**:
@@ -335,8 +310,6 @@ Want to test Strigoi yourself? We provide **3 intentionally vulnerable MCP serve
 *Ready to secure your AI systems?*
 
 **👉 [Install Strigoi Now](./getting-started/installation/README.md)**
-
-**👉 [Read the Prismatic Case Study](./case-studies/prismatic.md)**
 
 **👉 [Contact Our Team](mailto:security@macawi.ai)**
 

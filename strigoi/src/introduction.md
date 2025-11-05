@@ -34,20 +34,6 @@ Strigoi fills this critical gap by providing:
 
 ---
 
-## Proven Track Record
-
-**First Customer: Prismatic.io (August 2025)**
-
-Strigoi discovered **4 CRITICAL vulnerabilities** in Prismatic's GraphQL API before they reached production:
-- ❌ No GraphQL query depth limits (DoS vulnerability)
-- ❌ Unencrypted credential flow through STDIO
-- ❌ Missing query complexity analysis
-- ❌ No rate limiting on GraphQL endpoint
-
-**Result**: Vulnerabilities patched, production launch secured, customer testimonial received.
-
----
-
 ## Quick Navigation
 
 ### 🚀 **Getting Started**

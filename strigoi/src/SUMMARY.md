@@ -10,12 +10,6 @@
 
 ---
 
-# Case Studies
-
-- [Prismatic.io - GraphQL Security Success](./case-studies/prismatic.md)
-
----
-
 # Getting Started
 
 - [What is Strigoi?](./getting-started/what-is-strigoi.md)
